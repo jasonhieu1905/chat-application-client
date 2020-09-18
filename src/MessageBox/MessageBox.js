@@ -2,6 +2,11 @@ import React from "react";
 import "./MessageBox.scss";
 
 function MessageBox({ message, setMessage, sendMessage }) {
+  const send = (event) => {
+    setMessage('');
+    sendMessage(event);
+  }
+ 
   return (
     <div className="chat-message clearfix">
       <textarea
@@ -12,12 +17,12 @@ function MessageBox({ message, setMessage, sendMessage }) {
         value={message}
         onChange={(event) => setMessage(event.target.value)}
         onKeyPress={(event) =>
-          event.key === "Enter" ? sendMessage(event) : null
+          event.key === "Enter" ? send(event) : null
         }
       ></textarea>
       <i className="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
       <i className="fa fa-file-image-o"></i>
-      <button>Send</button>
+      <button onClick={(event) => send(event)}>Send</button>
     </div>
   );
 }

@@ -49,7 +49,7 @@ function Chat({ location }) {
       <div className="chat">
         <InfoBar room={room} />
 
-        <Messages />
+        <Messages messages={messages} name={name}/>
 
         <MessageBox
           message={message}
